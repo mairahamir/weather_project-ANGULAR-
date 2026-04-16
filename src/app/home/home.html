@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="weather-container" *ngIf="getjsondata">
+  <!-- CITY HEADER -->
+<div class="header">
+  <h1><i class="fa-solid fa-cloud-sun"></i> Weather</h1>
+  <p><i class="fa-solid fa-location-dot"></i> {{ getjsondata?.name }}</p>
+</div>
+
+  <!-- MAIN WEATHER CARD -->
+  <div class="glass-card">
+
+  <div class="temp-section">
+    <h2><i class="fa-solid fa-temperature-three-quarters"></i> {{ getjsondata?.main?.temp }}°C</h2>
+
+    <p>
+      <i class="fa-solid fa-cloud"></i>
+      {{ getjsondata?.weather?.[0]?.description }}
+    </p>
+  </div>
+
+
+</div>
+
+<div class="details">
+
+  <div class="card">
+    <p><i class="fa-solid fa-face-smile"></i> Feels Like</p>
+    <h3>{{ getjsondata?.main?.feels_like }}°C</h3>
+  </div>
+
+  <div class="card">
+    <p><i class="fa-solid fa-droplet"></i> Humidity 💧</p>
+    <h3>{{ getjsondata?.main?.humidity }}%</h3>
+  </div>
+
+  <div class="card">
+    <p><i class="fa-solid fa-gauge"></i> Pressure</p>
+    <h3>{{ getjsondata?.main?.pressure }} hPa</h3>
+  </div>
+
+  <div class="card">
+    <p><i class="fa-solid fa-wind"></i> Wind 🌬️</p>
+    <h3>{{ getjsondata?.wind?.speed }} m/s</h3>
+  </div>
+
+  <div class="card">
+    <p><i class="fa-solid fa-eye"></i> Visibility</p>
+    <h3>{{ getjsondata?.visibility }} m</h3>
+  </div>
+
+  <div class="card">
+    <p><i class="fa-solid fa-cloud"></i> Clouds ☁️</p>
+    <h3>{{ getjsondata?.clouds?.all }}%</h3>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

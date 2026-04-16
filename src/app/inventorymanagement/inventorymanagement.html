@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Welcome To Product Inventory Management System</h1>
+<p>Explore Products</p>
+<button (click)="toggleDisplay()">
+    <span *ngIf="isVisible">Hide Products</span>
+  <span *ngIf="!isVisible">Show Products</span>
+</button>
+</div>
+
+<table border="1" *ngIf="isVisible">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Stock</th>
+      <th>Stock Status</th>
+      <th>Category</th>
+      
+    </tr>
+  </thead>
+
+  <tbody >
+    <tr *ngFor="let product of products" >
+      <td >{{ product.name }}</td>
+      <td >{{ product.stock }}</td> 
+      <td >{{getstockstatus(product.stock)}}</td>
+      <td >{{ product.category }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div [ngSwitch]="selectedCategory" class="gap">
+
+  <div *ngSwitchCase="'clothing'" class="clothing">Clothing Products</div>
+
+  <div *ngSwitchCase="'electronics'" class="electronics">Electronics Products</div>
+
+  <div *ngSwitchCase="'footwear'" class="footwear">Footwear Products</div>
+
+  <div *ngSwitchCase="'accessories'" class="accessories">Accessories Products</div>
+
+  <div *ngSwitchDefault class="default">Other Products</div>
+
+</div>
